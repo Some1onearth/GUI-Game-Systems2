@@ -1,0 +1,47 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Chest : MonoBehaviour
+{
+    public bool showChest;
+    public int[] itemsToSpawn;
+    public List<Item> chestInv = new List<Item>();
+    public Item selectedChestItem;
+
+    private void Start()
+    {
+        itemsToSpawn = new int[Random.Range(1, 11)];
+        for (int i = 0; i < itemsToSpawn.Length; i++)
+        {
+            itemsToSpawn[i] = Random.Range(0, 801);
+            chestInv.Add(ItemData.CreateItem(itemsToSpawn[i]));
+        }    
+    }
+    private void OnGUI()
+    {
+        if (showChest)
+        {
+            for (int i = 0; i < chestInv.Count; i++)
+            {
+                if (GUI.Button(new Rect(IMGUIScript.scr.x*12.75f, IMGUIScript.scr.y * 0.25f + i * (IMGUIScript.scr.y * 0.25f), IMGUIScript.scr.x * 3f, IMGUIScript.scr.y * 0.25f),chestInv[i].Name))
+                {
+                    selectedChestItem = chestInv[i];
+                }
+            }
+            if (selectedChestItem == null)
+            {
+                return;
+            }
+            else
+            {
+                if (GUI.Button(new Rect(IMGUIScript.scr.x * 12.5f, IMGUIScript.scr.y * 6.25f, IMGUIScript.scr.x * 1.5f, IMGUIScript.scr.y * 0.25f), "Take"))
+                {
+                    Inventory.inv.Add(ItemData.CreateItem(selectedChestItem.ID));
+                    chestInv.Remove(selectedChestItem);
+                    selectedChestItem = null;
+                }
+            }
+        }
+    }
+}
