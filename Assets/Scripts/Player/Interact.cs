@@ -9,21 +9,21 @@ public class Interact : MonoBehaviour
 
     void Update()
     {
+        #region RayCasting Info
+        //RAY - A ray is an infinite line starting at origin and going in some direction.
+        //RAYCASTING - Casts a ray, from point origin, in direction, of length maxDistance, against all colliders in the Scene.
+        //RAYCASTHIT - Structure used to get information back from a raycast
+        #endregion
+        //create ray
+        Ray interactRay; //this is our line...Our Ray/Line doesn't have an origin, or a direction
+                         //assign an origin
+        interactRay = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
+        //this ray is shooting from the main camera's screen point center of screen
+        //create hit info
+        RaycastHit hitInfo;
         //if our interact key is pressed
         if (Input.GetKeyDown(KeyBindsManager.inputKeys["Interact"]))
         {
-            #region RayCasting Info
-            //RAY - A ray is an infinite line starting at origin and going in some direction.
-            //RAYCASTING - Casts a ray, from point origin, in direction, of length maxDistance, against all colliders in the Scene.
-            //RAYCASTHIT - Structure used to get information back from a raycast
-            #endregion
-            //create ray
-            Ray interactRay; //this is our line...Our Ray/Line doesn't have an origin, or a direction
-            //assign an origin
-            interactRay = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
-            //this ray is shooting from the main camera's screen point center of screen
-            //create hit info
-            RaycastHit hitInfo;
             //if this physics raycast hits something within 10 units
             if (Physics.Raycast(interactRay, out hitInfo, 10))
             {
@@ -64,14 +64,24 @@ public class Interact : MonoBehaviour
                 if (hitInfo.collider.CompareTag("Chest")) //does the same thing as .tag for now
                 {
                     //Debug that we hit an Item
-                    Debug.Log("Our Interact ray hit an Chest");
-                    Chest currenChest = hitInfo.transform.GetComponent<Chest>();
+                    Debug.Log("Our Interact ray hit a Chest");
+                    ChestInteract currenChest = hitInfo.transform.GetComponent<ChestInteract>();
                     if (currenChest != null)
                     {
-                        currenChest.showChest = !currenChest.showChest;
+                        currenChest.OpenChestMenu();
                     }
                 }
                 #endregion
+                if (hitInfo.collider.CompareTag("Shop")) //does the same thing as .tag for now
+                {
+                    //Debug that we hit an Item
+                    Debug.Log("Our Interact ray hit a Shop");
+                    ShopInteract shop = hitInfo.transform.GetComponent<ShopInteract>();
+                    if (shop != null)
+                    {
+                        shop.OpenShopMenu();
+                    }
+                }
             }
         }
     }

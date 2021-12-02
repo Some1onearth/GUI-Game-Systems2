@@ -19,6 +19,8 @@ public class PopulateGrid : MonoBehaviour
     }
     void Populate()
     {
+
+
         GameObject newObj; //create item
 
         for (int i = 0; i < numberToCreate; i++)

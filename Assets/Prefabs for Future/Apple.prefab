@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 508892697609869968}
   - component: {fileID: 1968600322362913649}
   - component: {fileID: 6901734412481328275}
+  - component: {fileID: -2458564986146614111}
   m_Layer: 5
   m_Name: Apple
   m_TagString: Untagged
@@ -75,3 +76,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &-2458564986146614111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7247781887016282912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dc8d20e38650bb4c8b5b9dc61fbf2b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+    itemName: Apple
+    stackable: 0
+    count: 1
+    icon: {fileID: 0}
+    droppedObj: {fileID: 0}

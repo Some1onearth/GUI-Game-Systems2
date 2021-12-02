@@ -45,11 +45,11 @@ public class Inventory : MonoBehaviour
         {
             for (int i = 0; i < 34; i++)
             {
-                inv.Add(ItemData.CreateItem(Random.Range(0, 703)));
+                inv.Add(ItemData.CreateItem(Random.Range(0, 803)));
             }
         }
 #endif
-        if (Input.GetKeyDown(KeyBindsManager.inputKeys["Inventory"]) && !PauseMenu.isPaused)
+        if (Input.GetKeyDown(KeyBindsManager.inputKeys["Inventory"]))
         {
             showInv = !showInv;
             if (showInv)
@@ -60,7 +60,7 @@ public class Inventory : MonoBehaviour
                 //cursor not locked
                 Cursor.lockState = CursorLockMode.Confined;
                 //time paused
-                Time.timeScale = 0;
+                //Time.timeScale = 0;
                 //PauseMenu.pauseMenu.Paused(); // can use this method but depends on how you plan it out
             }
             else
@@ -71,7 +71,7 @@ public class Inventory : MonoBehaviour
                 //cursor is locked3
                 Cursor.lockState = CursorLockMode.Locked;
                 //time is not paused
-                Time.timeScale = 1;
+                //Time.timeScale = 1;
                 //PauseMenu.pauseMenu.UnPaused();
             }
         }

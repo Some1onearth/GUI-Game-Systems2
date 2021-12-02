@@ -102,7 +102,7 @@ public class PauseMenu : MonoBehaviour
                 }
                 else
                 {
-                    if (!Inventory.showInv)
+                    if (!InventoryManager.showInv)
                     {
                         UnPaused();
                     }
@@ -111,6 +111,7 @@ public class PauseMenu : MonoBehaviour
             }
         }
     }
+    #region OnGUI
     //private void OnGUI()
     //{
     //    if (isPaused)
@@ -152,4 +153,5 @@ public class PauseMenu : MonoBehaviour
     //        Application.Quit();
     //    }
     //}
+    #endregion
 }
